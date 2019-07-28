@@ -1,0 +1,38 @@
+@import 'constants.scss'
+
+.search
+  padding: 1rem
+  &:hover
+    svg
+      color: $color-orange
+  svg
+    color: $color-font-light
+    width: 1.5rem
+    height: 1.5rem
+    cursor: pointer
+  .search-field
+    padding: 1rem
+    position: absolute
+    top: 3rem
+    right: 0
+    background-color: $color-bg
+    border-radius: 5px
+    @include mobile
+      padding: .5rem
+  .input
+    input
+      padding: 1.3rem 1rem
+      font-size: 1.2em
+      min-width: 30rem
+      @include mobile
+        font-size: .9em
+        padding: .5rem 1rem
+        min-width: 14rem
+
+    .hero-right
+      padding: 1.3rem 3rem
+      font-size: 1.2em
+      @include mobile
+        font-size: .9em
+        padding: .5rem 1rem
+

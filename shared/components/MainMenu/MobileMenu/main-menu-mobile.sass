@@ -1,0 +1,43 @@
+@import 'constants.scss'
+
+.menu-mobile
+  position: relative
+  .search
+    position: absolute
+    top: 0
+    right: 0
+    svg
+      width: 1.3rem
+      height: 1.3rem
+
+.butter-menu
+  margin-top: $page-padding-mobile
+  &.open
+    .main-menu-mobile
+      transform: translateX(0)
+
+  .main-menu-mobile
+    position: absolute
+    top: -1rem
+    left: -$page-padding-mobile
+    background-color: $color-bg
+    transition: transform .3s
+    transform: translateX(-150%)
+    width: 100vw
+    min-height: 100vh
+    padding: 2rem 0
+    .close
+      position: absolute
+      top: 1rem
+      right: 1rem
+    .sub-menu
+      padding: 1rem
+      font-size: 1rem
+      @include mobile
+        font-size: .9em
+        .sub-menu__content
+          flex-wrap: wrap
+    .menu-item
+      color: $color-font
+      padding: 1rem
+      margin-right: 0

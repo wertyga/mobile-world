@@ -1,0 +1,10 @@
+node_modules/
+public/
+dist/
+.idea/
+server/common/emailConfig.js
+production/
+/BANNERS/
+ORDERS/
+static/ARTICLES/
+build/

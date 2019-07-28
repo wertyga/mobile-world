@@ -1,0 +1,17 @@
+@import "constants.scss"
+
+.page
+  &-wrapper
+    min-height: 100vh
+    padding: 0 $page-padding
+    @include mobile
+      padding: 0 $page-padding-mobile
+  &-banner
+    margin-right: -$page-padding
+    margin-left: -$page-padding
+    @include mobile
+      margin-right: -$page-padding-mobile
+      margin-left: -$page-padding-mobile
+    img
+      width: 100%
+      display: flex

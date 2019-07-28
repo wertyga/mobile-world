@@ -1,0 +1,77 @@
+$color-font: #282828;
+$color-red: #B80000;
+$color-red-dark: #820000;
+$color-orange: #FF8B00;
+$border-color: #cccccc;
+$color-font-light: #ffffff;
+$color-green-menu: #068e00;
+$color-green-dark-menu: #066700;
+$disable-color: #d4d4d4;
+
+$color-bg: #ffffff;
+$color-bg-grey: #d5d5d5;
+
+$xs-max-width: 47.999em;
+$sm-min-width: 48em;
+$sm-max-width: 63.999em;
+$md-min-width: 64em;
+$md-max-width: 74.999em;
+$lg-min-width: 75em;
+$xlg-min-width: 96em;
+
+$page-padding: 2rem;
+$page-padding-mobile: 1rem;
+$set-wide: calc(100% + 2rem * 2);
+$set-wide-mobile: calc(100% + 1rem * 2);
+$border-radius-input: 5px;
+
+:export {
+  mobileMaxWidth: $sm-max-width;
+  desktopMinWidth: $md-min-width;
+}
+
+@mixin primary_font {
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+@mixin second_font {
+  font-family: "Times New Roman", serif;
+}
+
+@mixin desktop-large {
+  @media (min-width: $xlg-min-width) {
+    @content
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $md-min-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $sm-max-width) {
+    @content;
+  }
+}
+
+@mixin mobile-small {
+  @media (max-width: $xs-max-width) {
+    @content;
+  }
+}
+
+@mixin btn-no {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  cursor: pointer;
+  display: inline;
+}
+
+@mixin text-light {
+  font-size: 12px;
+  font-weight: 100;
+}
+

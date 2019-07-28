@@ -1,0 +1,35 @@
+@import 'constants.scss'
+
+.sub-menu
+  position: absolute
+  top: 85%
+  left: 0
+  display: flex
+  flex-direction: column
+  background-color: $color-bg
+  text-transform: none
+  padding: 2rem
+  font-size: 1rem
+  border-radius: .5rem
+  z-index: 2
+  &__title
+    color: $color-red
+    margin-bottom: 1.5rem
+    white-space: nowrap
+    text-transform: uppercase
+    font-weight: 500
+    font-size: .9em
+    &:hover
+      color: $color-red-dark
+  &__content
+    display: flex
+    &__block
+      display: flex
+      flex-direction: column
+    &__item
+      padding: 0 1.5rem 1.5rem 0
+      white-space: nowrap
+      transition: color .3s
+      font-size: .9em
+      &:hover
+        color: $color-orange

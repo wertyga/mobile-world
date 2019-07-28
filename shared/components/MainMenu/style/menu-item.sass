@@ -1,0 +1,31 @@
+@import 'constants.scss'
+
+.menu-item
+  text-transform: uppercase
+  margin-right: 1.5rem
+  display: flex
+  align-items: center
+  cursor: pointer
+  position: relative
+  transition: color .3s
+  font-size: .9rem
+  font-weight: 500
+  user-select: none
+  color: $color-font-light
+  &:hover
+    color: $color-orange
+  .sub-menu
+    display: none
+    opacity: 0
+    transform: translateY(-10%)
+    transition: transform .5s, opacity .5s
+  svg
+    transition: transform .3s
+    margin-left: .8rem
+  &.open
+    .sub-menu
+      display: flex
+      opacity: 1
+      transform: translateY(0%)
+    svg
+      transform: rotate(180deg)

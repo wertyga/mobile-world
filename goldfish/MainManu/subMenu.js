@@ -1,0 +1,1 @@
+export const ITEMS_IN_COLUMN_COUNT = 7
