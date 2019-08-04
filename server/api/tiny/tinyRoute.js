@@ -3,8 +3,27 @@ import { handleBlob } from '../upload/handleBlob';
 import { config } from 'server/common/config'
 
 import { saveArticle } from './saveArticle'
+import { Article } from 'server/models'
 
 export const tinyRoute = express.Router()
+
+const postPutHandle = async (req, res) => {
+  const {uploadPath: {articleImagePreviewPath}} = config
+
+  await handleBlob({
+    req,
+    uploadPath: articleImagePreviewPath,
+    onError: (e) => res.status(500).json({error: e.message}),
+    onSuccess: async (data) => {
+      try {
+        const article = await saveArticle(data)
+        res.json({ article });
+      } catch (e) {
+        res.status(400).json({ error: e.message })
+      }
+    },
+  })
+}
 
 tinyRoute.post('/image', async (req, res) => {
   const { uploadPath: { articleImagesPath } } = config
@@ -16,20 +35,15 @@ tinyRoute.post('/image', async (req, res) => {
   })
 })
 
-tinyRoute.post('/article', async (req, res) => {
-  const { uploadPath: { articleImagePreviewPath } } = config
+tinyRoute.post('/article', postPutHandle)
 
-  await handleBlob({
-    req,
-    uploadPath: articleImagePreviewPath,
-    onError: (e) => res.status(500).json({ error: e.message }),
-    onSuccess: async (data) => {
-      try {
-        const article = await saveArticle(data)
-        res.json({ article });
-      } catch (e) {
-        res.status(400).json({ error: e.message })
-      }
-    },
-  })
+tinyRoute.put('/article', postPutHandle)
+
+tinyRoute.delete('/article', async ({ body: { id } }, res) => {
+  try {
+    await Article.findByIdAndDelete(id)
+    res.json(`success deleted ${id}`)
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+  }
 })

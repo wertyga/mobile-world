@@ -11,3 +11,17 @@ export const uploadArticle = (data) => fetch({
   url: '/api/upload/tiny/article',
   data,
 })
+
+export const updateArticle = (data) => fetch({
+  method: 'put',
+  url: '/api/upload/tiny/article',
+  data,
+})
+
+export const deleteArticle = (id) => fetch({
+  method: 'delete',
+  url: '/api/upload/tiny/article',
+  data: {
+    id,
+  },
+})

@@ -9,7 +9,7 @@ import { Loader } from 'shared/components/Common'
 import 'shared/components/Admin/style/admin-article.sass'
 
 const mapState = ({
-                    adminArticleStore: { uploadArticleImage, handleArticleUpload, error, articleState, message },
+                    adminArticleStore: { uploadArticleImage, handleArticleUpload, error, articleState, message, handleUpdateArticle },
                     adminArticleStore,
   articleViewStore: { getArticle, articleViewState, error: articleViewError, articleView },
                   }) => ({
@@ -23,6 +23,7 @@ const mapState = ({
   articleViewState,
   articleViewError,
   articleView,
+  handleUpdateArticle,
 })
 
 @withRouter
@@ -31,7 +32,9 @@ export default class AdminArticle extends React.Component {
   constructor(props) {
     super(props)
 
+    const { router: { query: { edit, id } } } = props
     this.timer = null
+    this.isUpdate = !!(edit && id)
 
     this.initState = Object.keys(gfAdminArticle.inputs).reduce((init, next) => ({
       ...init,
@@ -39,6 +42,13 @@ export default class AdminArticle extends React.Component {
     }), { content: '' })
 
     this.state = this.initState
+  }
+
+  componentDidUpdate(prevProps) {
+    const { router: { query: { edit, id } } } = this.props
+    if (!edit && !id && prevProps.router.query.edit) {
+      this.setState(this.initState)
+    }
   }
 
   async componentDidMount() {
@@ -57,7 +67,6 @@ export default class AdminArticle extends React.Component {
         [next]: next === 'file' ? { name: this.props.articleView.previewImage } : this.props.articleView[next],
       }), {})
 
-    console.log(stateObj)
     this.setState(stateObj)
   }
 
@@ -76,12 +85,13 @@ export default class AdminArticle extends React.Component {
     e.preventDefault();
 
     const { handleArticleUpload, adminArticleStore } = this.props
+    const { router: { query: { id } } } = this.props
 
     try {
-      await handleArticleUpload(this.state)
+      await handleArticleUpload({ ...this.state, id })
 
       this.timer = setTimeout(() => adminArticleStore.message = '', 2000)
-      if (!adminArticleStore.error) this.setState(this.initState)
+      if (!adminArticleStore.error && !this.isUpdate) this.setState(this.initState)
     } catch (e) {
       console.warn(e)
     }
@@ -89,7 +99,7 @@ export default class AdminArticle extends React.Component {
 
   onChange = (value, name) => {
     this.setState({
-      [name]: value,
+      [name]: name === 'tags' ? value.split(',').map(item => item.trim()) : value,
     })
     this.props.adminArticleStore.error = ''
   }

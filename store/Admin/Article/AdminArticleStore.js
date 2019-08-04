@@ -29,19 +29,38 @@ export class AdminArticleStore {
   handleArticleUpload = async (data) => {
     try {
       const isSomeNotFilled = Object.entries(data).find(([key, value]) => !value)
-      if (isSomeNotFilled) throw new Error(TEXT.fillError)
+      if (isSomeNotFilled && isSomeNotFilled[0] !== 'id') throw new Error(TEXT.fillError)
 
       const Blob = new FormData();
 
       Object.entries(data).forEach(([key, value]) => {
-        Blob.append(key, value)
+        if (key === 'id' && !value) {
+          return;
+        }
+        Blob.append(key, key === 'file' && !value.size ? value.name : value)
       })
 
       this.articleState = 'pending'
 
-      await api.uploadArticle(Blob)
+      !data.id ?
+        await api.uploadArticle(Blob) :
+        await api.updateArticle(Blob)
 
       this.message = TEXT.successSaved
+      this.articleState = 'fulfilled'
+    } catch (e) {
+      this.error = _get(e, 'response.data.error', e.message);
+      this.articleState = 'rejected'
+    }
+  }
+
+  @action
+  handleArticleDelete = async (id) => {
+    try {
+      this.articleState = 'pending'
+
+      await api.deleteArticle(id)
+
       this.articleState = 'fulfilled'
     } catch (e) {
       this.error = _get(e, 'response.data.error', e.message);

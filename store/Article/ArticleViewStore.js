@@ -10,8 +10,6 @@ export class ArticleViewStore {
 
   @action
   getArticle = async (id) => {
-    if (this.articleView._id === id) return;
-
     try {
       this.articleViewState = 'pending'
 

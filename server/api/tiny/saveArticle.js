@@ -6,21 +6,40 @@ const TEXT = {
 
 export const saveArticle = async ({
   filePaths = [],
-  fields: { name = [], content = [], href = [], description = [], tags = [], category = [] }
+  fields,
+  isUpdate,
 }) => {
-  const existArticle = await Article.findOne({ name })
+  const { name = [], content = [], href = [], description = [], tags = [], category = [], id = [], file = [] } = fields;
+  const updateID = id[0];
 
-  if (existArticle) throw new Error(TEXT.error);
+  let article = {};
+  const previewImage = filePaths[0] || file[0]
+  const saveObject = {
+      name: name[0],
+      content: content[0],
+      href: href[0],
+      description: description[0],
+      tags: tags[0].split(','),
+      category: category[0],
+      previewImage,
+    }
+    console.log(updateID)
+  if (updateID) {
+    article = await Article.findByIdAndUpdate(updateID, { $set: saveObject }, { upsert: true, new: true })
+  } else {
+    const existArticle = await Article.findOne({ name })
 
-  const previewImage = filePaths[0];
+    if (existArticle) throw new Error(TEXT.error)
+    article = await new Article({
+        name: name[0],
+        content: content[0],
+        href: href[0],
+        description: description[0],
+        tags: tags[0].split(',').map(item => item.trim()),
+        category: category[0],
+        previewImage,
+      }).save()
+  }
 
-  return await new Article({
-    name: name[0],
-    content: content[0],
-    href: href[0],
-    description: description[0],
-    tags: tags[0].split(',').map(item => item.trim()),
-    category: category[0],
-    previewImage,
-  }).save()
+  return article;
 }
