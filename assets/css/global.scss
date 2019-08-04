@@ -1,7 +1,7 @@
-@import url("./flexgrid.scss");
-@import url("./flexgrid-helpers.scss");
-@import url("./fonts.scss");
-@import url("./constants.scss");
+@import "./flexgrid.scss";
+@import "./flexgrid-helpers.scss";
+@import "./fonts.scss";
+@import "./constants.scss";
 
 :root {
     --color-font: #282828;
@@ -32,9 +32,8 @@ section {
     display: block;
 }
 
-h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
 }
 
 figcaption,
@@ -58,11 +57,19 @@ pre {
     font-size: 1em; /* 2 */
 }
 
+a {
+  transition: color .3s;
+}
+
 a, a:visited, a:focus, a:hover {
     text-decoration: none;
     color: var(--color-font);
     background-color: transparent; /* 1 */
     -webkit-text-decoration-skip: objects; /* 2 */
+}
+
+a:hover {
+  color: $color-orange;
 }
 
 abbr[title] {
@@ -248,4 +255,8 @@ template {
 
 [hidden] {
     display: none;
+}
+
+p {
+  margin: 0;
 }

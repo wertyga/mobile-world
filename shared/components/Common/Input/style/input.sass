@@ -4,7 +4,11 @@
   display: inline-flex
   align-items: center
   position: relative
-  input, .input__file
+
+  textarea
+    min-height: 10rem
+
+  input, textarea, .input__file
     padding: .5rem 1rem
     border-radius: $border-radius-input
     border: 1px solid $border-color
@@ -33,6 +37,8 @@
     height: 100%
     position: absolute
     right: 0
+    display: flex
+    align-items: center
   button.hero-right, button.hero-left
     cursor: pointer
     &:hover

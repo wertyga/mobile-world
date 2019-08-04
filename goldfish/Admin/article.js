@@ -1,13 +1,37 @@
 export const gfAdminArticle = {
-  inputHeroes: {
+  inputs: {
     name: {
-      text: 'Name',
+      hero: {
+        text: 'Name',
+      },
     },
     href: {
-      text: 'Href'
+      hero: {
+        text: 'Href',
+      },
     },
     file: {
-      text: 'Preview image'
+      hero: {
+        text: 'Preview image',
+      },
     },
-  }
+    category: {
+      hero: {
+        text: 'Category',
+      },
+    },
+    description: {
+      hero: {
+        text: 'Description',
+      },
+      textarea: true,
+    },
+    tags: {
+      hero: {
+        text: 'Tags',
+      },
+    },
+  },
+
+  editLink: id => `/admin/create-article?edit=true&id=${id}`
 }

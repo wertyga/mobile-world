@@ -10,12 +10,9 @@ export class AdminLayout extends React.Component {
 
     return (
       <div className={cn('admin-wrapper container', className)}>
-        <Head>
-          <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" />
-        </Head>
         <div className="admin-wrapper__menu">
           {gfAdminWrapper.menu.map(({ href, text }) => (
-            <Link href={href} key={href}>
+            <Link href={href} key={href} prefetch>
               <a>{text}</a>
             </Link>
           ))}

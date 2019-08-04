@@ -6,7 +6,7 @@ import { Provider } from 'mobx-react'
 import { initializeStore } from 'store/store'
 import { getStoresData } from 'shared/utils'
 
-import 'assets/css/global.css'
+import 'assets/css/global.scss'
 
 const createBrowserHistory = require('history').createBrowserHistory; // eslint-disable-line
 

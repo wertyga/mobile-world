@@ -37,21 +37,25 @@ export class Input extends React.Component {
     const { heroRightWidth } = this.state;
     const isFile = type === 'file'
 
+    const props = {
+      type,
+      value,
+      onChange: this.handleChange,
+      placeholder,
+      name,
+      style: {
+        paddingRight: heroRightWidth,
+      },
+      className: cn({file: isFile}),
+      id: isFile ? 'file-input' : name,
+    }
+
+    const Element = textarea ? <textarea {...props} /> : <input {...props} />
     return (
       <div className={cn('input', { 'hero-right': heroRight }, { 'hero-left': heroLeft }, className)}>
         {heroLeft}
-        <input
-          type={type}
-          value={value}
-          onChange={this.handleChange}
-          placeholder={placeholder}
-          name={name}
-          style={{
-            paddingRight: heroRightWidth,
-          }}
-          className={cn({ file: isFile })}
-          id={isFile ? 'file-input' : {name}}
-        />
+        {Element}
+
         {isFile && <label htmlFor="file-input" className="input__file">{`File: ${visibleValue}`}</label>}
         {heroRight && (
           heroRight.button ?
