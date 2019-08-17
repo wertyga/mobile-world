@@ -6,6 +6,7 @@ server/common/emailConfig.js
 production/
 /BANNERS/
 ORDERS/
+PROD/
 static/ARTICLES/
 build/
 package-lock.json
