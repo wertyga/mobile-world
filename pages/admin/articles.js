@@ -68,16 +68,17 @@ export default class AdminArticles extends React.Component {
                 </span>
                   <div className="item-wrapper__list">
                     {isOpen &&
-                    value.map(({ _id, name, createdAt }) => {
-                      return (
-                        <Link href={`/admin/article-view?id=${_id}`} key={_id}>
-                          <a className="article-link">
-                            <span>{name}</span>
-                            <span>{createdAt}</span>
-                          </a>
-                        </Link>
-                      )
-                    })
+                      value.map(({ _id, name, createdAt, category }) => {
+                        return (
+                          <Link href={`/admin/article-view?id=${_id}`} key={_id}>
+                            <a className="article-link">
+                              <strong>{category.toUpperCase()}</strong>
+                              <span>{name}</span>
+                              <span>{createdAt}</span>
+                            </a>
+                          </Link>
+                        )
+                      })
                     }
                   </div>
                 </div>

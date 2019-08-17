@@ -14,7 +14,7 @@ articleRoute.get('/list', async ({ query: { upToDate = 0 } }, res) => {
         $gte: new Date(upToDate),
         $lt: new Date(),
       },
-    }, ['name', 'createdAt'])
+    }, ['name', 'createdAt', 'category'])
 
     res.json({ articles })
   } catch (e) {

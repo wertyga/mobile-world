@@ -2447,7 +2447,8 @@ function (_React$Component) {
         }, isOpen && value.map(function (_ref4) {
           var _id = _ref4._id,
               name = _ref4.name,
-              createdAt = _ref4.createdAt;
+              createdAt = _ref4.createdAt,
+              category = _ref4.category;
           return react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
             href: "/admin/article-view?id=".concat(_id),
             key: _id,
@@ -2463,18 +2464,25 @@ function (_React$Component) {
               lineNumber: 74
             },
             __self: this
-          }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+          }, react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("strong", {
             className: "jsx-".concat(_shared_components_Admin_Article_style_articles_style__WEBPACK_IMPORTED_MODULE_17__["default"].__hash),
             __source: {
               fileName: _jsxFileName,
               lineNumber: 75
             },
             __self: this
-          }, name), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+          }, category.toUpperCase()), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
             className: "jsx-".concat(_shared_components_Admin_Article_style_articles_style__WEBPACK_IMPORTED_MODULE_17__["default"].__hash),
             __source: {
               fileName: _jsxFileName,
               lineNumber: 76
+            },
+            __self: this
+          }, name), react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+            className: "jsx-".concat(_shared_components_Admin_Article_style_articles_style__WEBPACK_IMPORTED_MODULE_17__["default"].__hash),
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 77
             },
             __self: this
           }, createdAt)));
@@ -2502,9 +2510,9 @@ function (_React$Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _defaultExport = new String(".admin-articles.jsx-2203890464{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;}.admin-articles.jsx-2203890464 .list.jsx-2203890464{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.admin-articles.jsx-2203890464 .article-link.jsx-2203890464{margin-top:.5rem;}.admin-articles.jsx-2203890464 .article-link.jsx-2203890464 span.jsx-2203890464:first-child{margin-right:1rem;}.admin-articles.jsx-2203890464 h1.jsx-2203890464{margin-bottom:1rem;}.admin-articles.jsx-2203890464 .item-wrapper.jsx-2203890464{margin-bottom:1rem;}.admin-articles.jsx-2203890464 .article-date.jsx-2203890464{cursor:pointer;}.admin-articles.jsx-2203890464 .article-date.jsx-2203890464 span.jsx-2203890464{margin-left:1rem;}.admin-articles.jsx-2203890464 .item-wrapper__list.jsx-2203890464{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-left:1rem;}");
+var _defaultExport = new String(".admin-articles.jsx-2826052987{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;position:relative;}.admin-articles.jsx-2826052987 .list.jsx-2826052987{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}.admin-articles.jsx-2826052987 .article-link.jsx-2826052987{margin-top:.5rem;}.admin-articles.jsx-2826052987 .article-link.jsx-2826052987 span.jsx-2826052987:first-child,.admin-articles.jsx-2826052987 .article-link.jsx-2826052987 strong.jsx-2826052987{margin-right:1rem;}.admin-articles.jsx-2826052987 h1.jsx-2826052987{margin-bottom:1rem;}.admin-articles.jsx-2826052987 .item-wrapper.jsx-2826052987{margin-bottom:1rem;}.admin-articles.jsx-2826052987 .article-date.jsx-2826052987{cursor:pointer;}.admin-articles.jsx-2826052987 .article-date.jsx-2826052987 span.jsx-2826052987{margin-left:1rem;}.admin-articles.jsx-2826052987 .item-wrapper__list.jsx-2826052987{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-left:1rem;}");
 
-_defaultExport.__hash = "2203890464";
+_defaultExport.__hash = "2826052987";
 /* harmony default export */ __webpack_exports__["default"] = (_defaultExport);
 
 /***/ }),

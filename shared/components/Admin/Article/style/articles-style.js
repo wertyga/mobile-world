@@ -13,7 +13,7 @@ export default css`
 
     .article-link {
       margin-top: .5rem;
-      span:first-child {
+      span:first-child, strong {
         margin-right: 1rem;
       }
     }
