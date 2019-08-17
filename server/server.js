@@ -21,7 +21,7 @@ app.prepare().then(() => {
 
   server.use(bodyParser.json());
   server.use(cookieSession(config.session))
-  server.use(express.static(config.uploadPath.articleImages));
+  server.use(express.static(config.uploadPath.articleImagesPath));
 
   server.all('/admin/*', adminAuthMiddleware)
 

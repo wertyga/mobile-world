@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { withRouter } from 'next/router'
+import _JSXStyle from 'styled-jsx/style'
 
 import { observer } from 'mobx-react'
 import { gfAdmin } from 'goldfish'
 import { Loader } from 'shared/components/Common'
-
-import 'shared/components/Admin/style/admin-auth.sass'
 
 const AdminAuthComponent = (props) => {
   const { adminStore, router } = props
@@ -39,7 +38,7 @@ const AdminAuthComponent = (props) => {
     <form className="admin-auth" onSubmit={onSubmit}>
       {error && <div className="error">{error}</div>}
       {pending && <Loader />}
-      <div className="admin-auth__content">
+      <div className="content">
         <input
           type="text"
           value={name}
@@ -52,6 +51,28 @@ const AdminAuthComponent = (props) => {
         />
         <button>SUBMIT</button>
       </div>
+
+      <style jsx>{`
+        .admin-auth {
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-top: 10rem;
+          flex-direction: column;
+        }
+        .error {
+          margin-bottom: 2rem;
+        }
+        .content {
+          display: flex;
+          flex-direction: column;
+          width: 20rem;
+        }
+        input {
+          margin-bottom: 1.5rem;
+        }
+      `}</style>
     </form>
   );
 }

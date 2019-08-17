@@ -1,4 +1,5 @@
 import App, { Container } from 'next/app'
+import _JSXStyle from 'styled-jsx/style';
 import Head from 'next/head'
 import 'shared/utils/getStoresData'
 
@@ -6,7 +7,7 @@ import { Provider } from 'mobx-react'
 import { initializeStore } from 'store/store'
 import { getStoresData } from 'shared/utils'
 
-import 'assets/css/global.css'
+import globalStyle from 'assets/css/global.style';
 
 const createBrowserHistory = require('history').createBrowserHistory; // eslint-disable-line
 
@@ -53,6 +54,8 @@ class EnnergiiaApp extends App {
         <Provider {...this.mobxStore}>
           <Component {...pageProps} />
         </Provider>
+
+        <style jsx global>{globalStyle}</style>
       </Container>
     );
   }

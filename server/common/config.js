@@ -29,6 +29,7 @@ export const config = {
     salt: 10
   },
   uploadPath: {
-    articleImages: path.join(__dirname, '../../static/images/ARTICLES')
+    articleImagesPath: path.join(__dirname, '../../static/images/ARTICLES'),
+    articleImagePreviewPath: path.join(__dirname, '../../static/images/ARTICLES/preview'),
   },
 };

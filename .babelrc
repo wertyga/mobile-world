@@ -10,6 +10,17 @@
     ["@babel/plugin-proposal-class-properties", { "loose": true }],
     ["module-resolver", {
       "root": ["./"]
-    }]
+    }],
+    [
+      "styled-jsx/babel",
+      { "plugins": [
+        ["styled-jsx-plugin-sass", {
+          "sassOptions": {
+            "includePaths": ["./assets/css"],
+            "precision": 2
+          }
+        }]]
+      }
+    ]
   ]
 }

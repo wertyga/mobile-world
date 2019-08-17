@@ -8,3 +8,5 @@ production/
 ORDERS/
 static/ARTICLES/
 build/
+package-lock.json
+static/images/ARTICLES/

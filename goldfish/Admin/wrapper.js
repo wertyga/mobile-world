@@ -5,8 +5,8 @@ export const gfAdminWrapper = {
       text: 'Main',
     },
     {
-      href: '/admin/article',
-      text: 'Article',
+      href: '/admin/create-article',
+      text: 'Create article',
     },
     {
       href: '/admin/articles',

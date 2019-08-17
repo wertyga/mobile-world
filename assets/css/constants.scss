@@ -10,6 +10,8 @@ $disable-color: #d4d4d4;
 
 $color-bg: #ffffff;
 $color-bg-grey: #d5d5d5;
+$color-facebook: #3B5998;
+$color-twitter: #28AAE1;
 
 $xs-max-width: 47.999em;
 $sm-min-width: 48em;
@@ -25,17 +27,12 @@ $set-wide: calc(100% + 2rem * 2);
 $set-wide-mobile: calc(100% + 1rem * 2);
 $border-radius-input: 5px;
 
-:export {
-  mobileMaxWidth: $sm-max-width;
-  desktopMinWidth: $md-min-width;
-}
-
 @mixin primary_font {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
 }
 
 @mixin second_font {
-  font-family: "Times New Roman", serif;
+  font-family: "Ubuntu", serif;
 }
 
 @mixin desktop-large {
@@ -60,18 +57,5 @@ $border-radius-input: 5px;
   @media (max-width: $xs-max-width) {
     @content;
   }
-}
-
-@mixin btn-no {
-  background: none !important;
-  border: none;
-  padding: 0 !important;
-  cursor: pointer;
-  display: inline;
-}
-
-@mixin text-light {
-  font-size: 12px;
-  font-weight: 100;
 }
 

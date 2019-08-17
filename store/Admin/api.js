@@ -11,8 +11,7 @@ export const checkSession = () => fetch({
   url: '/api/admin/check-session',
 })
 
-export const uploadArticleImage = (data) => fetch({
-  method: 'post',
-  url: '/api/upload/tiny/image',
-  data,
+export const checkAdmin = () => fetch({
+  method: 'get',
+  url: '/admin/check',
 })

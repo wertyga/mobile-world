@@ -3,11 +3,11 @@ const withCSS = require('@zeit/next-css');
 const path = require('path');
 const { getEnvies } = require('./assets/envs/envs');
 
-module.exports = withCSS(withSass({
+module.exports = withSass({
   sassLoaderOptions: {
     includePaths: ['assets/css'],
   },
-  distDir: 'build',
+  distDir: 'PROD',
   webpack: (config, { webpack, defaultLoaders }) => {
     config.plugins.push(
       new webpack.ProvidePlugin({
@@ -15,6 +15,7 @@ module.exports = withCSS(withSass({
         PropTypes: 'prop-types',
         cn: 'classnames',
         inject: ['mobx-react', 'inject'],
+        _JSXStyle: ['styled-jsx', 'style'],
       }),
       new webpack.DefinePlugin({
         'process.env': getEnvies(),
@@ -22,4 +23,4 @@ module.exports = withCSS(withSass({
     );
     return config;
   },
-}));
+});

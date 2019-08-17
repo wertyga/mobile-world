@@ -6,6 +6,18 @@ export class AdminStore {
   @observable pending
   @observable error
 
+  register() {
+    // this.checkRights();
+  }
+
+  checkRights = async () => {
+      try {
+        await api.checkAdmin()
+      } catch (e) {
+        this.getRootStore().history.push('/admin/auth')
+      }
+  }
+
   adminAuth = async (data) => {
     this.pending = true
 
