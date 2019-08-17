@@ -27,17 +27,12 @@ $set-wide: calc(100% + 2rem * 2);
 $set-wide-mobile: calc(100% + 1rem * 2);
 $border-radius-input: 5px;
 
-:export {
-  mobileMaxWidth: $sm-max-width;
-  desktopMinWidth: $md-min-width;
-}
-
 @mixin primary_font {
-  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
 }
 
 @mixin second_font {
-  font-family: "Times New Roman", serif;
+  font-family: "Ubuntu", serif;
 }
 
 @mixin desktop-large {
@@ -62,18 +57,5 @@ $border-radius-input: 5px;
   @media (max-width: $xs-max-width) {
     @content;
   }
-}
-
-@mixin btn-no {
-  background: none !important;
-  border: none;
-  padding: 0 !important;
-  cursor: pointer;
-  display: inline;
-}
-
-@mixin text-light {
-  font-size: 12px;
-  font-weight: 100;
 }
 

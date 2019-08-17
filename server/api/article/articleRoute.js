@@ -7,9 +7,14 @@ const TEXT = {
   notFount: 'Статья не найдена',
 }
 
-articleRoute.get('/list', async (req, res) => {
+articleRoute.get('/list', async ({ query: { upToDate = 0 } }, res) => {
   try {
-    const articles = await Article.find({}, ['name'])
+    const articles = await Article.find({
+      createdAt: {
+        $gte: new Date(upToDate),
+        $lt: new Date(),
+      },
+    }, ['name', 'createdAt'])
 
     res.json({ articles })
   } catch (e) {

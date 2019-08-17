@@ -1,12 +1,11 @@
 import { withRouter  } from 'next/router'
+import _JSXStyle from 'styled-jsx/style'
 
 import { Input } from 'shared/components/Common'
 import { AdminLayout } from 'shared/layouts'
 import { gfAdminArticle } from 'goldfish/Admin'
 import { Editor } from '@tinymce/tinymce-react'
 import { Loader } from 'shared/components/Common'
-
-import 'shared/components/Admin/style/admin-article.sass'
 
 const mapState = ({
                     adminArticleStore: { uploadArticleImage, handleArticleUpload, error, articleState, message, handleUpdateArticle },
@@ -122,9 +121,9 @@ export default class AdminArticle extends React.Component {
 
         {isError && <div className="error">{isError}</div>}
         {isLoading && <Loader />}
-        {message && <div className="admin-article__message">{message}</div>}
+        {message && <div className="message">{message}</div>}
 
-        <div className="admin-article__content">
+        <div className="content">
           <form onSubmit={this.onSubmit}>
             {Object.entries(gfAdminArticle.inputs).map(([key, { hero, ...props }]) => (
               key === 'file' ?
@@ -158,6 +157,42 @@ export default class AdminArticle extends React.Component {
           onChange={this.tinyChange}
           value={content}
         />
+
+        <style jsx>{`
+          .error {
+            display: flex;
+            color: red;
+            padding: 1rem;
+            justify-content: center;
+          }
+          .content {
+            display: flex;
+            flex-direction: column;
+          }
+          form {
+            display: inline-flex;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 2rem;
+          }
+          div :global(.input) {
+            margin-bottom: 1rem;
+          }
+          :global(.tox-tinymce) {
+            width: 100%;
+            margin: 0;
+            height: 45rem !important;
+          }
+          .message {
+            color: green;
+            display: flex;
+            padding: 1rem;
+            justify-content: center;
+          }
+          h1 {
+             margin-bottom: 2rem;
+          }
+        `}</style>
       </AdminLayout>
     );
   }

@@ -5,6 +5,9 @@
 
 :root {
     --color-font: #282828;
+    --desktop: 64rem;
+    --color-red: #B80000;
+    --color-bg: #fff;
 }
 
 * {
@@ -63,7 +66,7 @@ a {
 
 a, a:visited, a:focus, a:hover {
     text-decoration: none;
-    color: var(--color-font);
+    color: $color-font;
     background-color: transparent; /* 1 */
     -webkit-text-decoration-skip: objects; /* 2 */
 }

@@ -82,3 +82,9 @@ export const beautifyDateServer = (datestring) => {
 export const beautifyDate = (datestring, options = defaultOptions) => {
   return parseDate(datestring).toLocaleString('ru', options);
 };
+
+export const getMonthBefore = () => {
+  const now = new Date();
+  const year = `20${now.getYear().toString().slice(1)}`; // Get 20... year
+  return  new Date(year, now.getMonth() - 1, now.getDate())
+};

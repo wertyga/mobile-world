@@ -2,7 +2,9 @@ import Facebook from 'react-icons/lib/fa/facebook'
 import Twitter from 'react-icons/lib/fa/twitter'
 import Comment from 'react-icons/lib/fa/comment-o'
 
-import './style/article-share-social.sass'
+import _JSXStyle from 'styled-jsx/style';
+
+import styles from './style/articleSocialShare.style';
 
 export const ArticleShareSocial = ({ commentsCount = 0 }) => {
   return (
@@ -17,6 +19,8 @@ export const ArticleShareSocial = ({ commentsCount = 0 }) => {
         <Comment />
         <span>{commentsCount}</span>
       </div>
+
+      <style jsx>{styles}</style>
     </div>
   );
 }

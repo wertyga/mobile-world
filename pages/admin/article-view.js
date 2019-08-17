@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import { withRouter } from 'next/router'
 import { AdminLayout } from 'shared/layouts'
+import _JSXStyle from 'styled-jsx/style'
 
 import { Loader } from 'shared/components/Common'
 import { ArticleView } from 'shared/components/Article'
 
 import { gfAdminArticle } from 'goldfish'
-
-import 'shared/components/Admin/style/admin-article-view.sass'
 
 const mapState = ({
   articleViewStore: {
@@ -71,16 +70,45 @@ export default class AdminArticleView extends React.Component {
         {loading && <Loader />}
         {error && <div className="error">{error}</div>}
 
-        <div className="admin-article-view__controls">
+        <div className="controls">
           <Link href={gfAdminArticle.editLink(id)}>
-            <a className="admin-article-view__edit">Edit</a>
+            <a className="edit">Edit</a>
           </Link>
-          <button onClick={this.onDeleteArticle} className="admin-article-view__delete">Delete</button>
+          <button onClick={this.onDeleteArticle} className="delete">Delete</button>
         </div>
 
         <div className="admin-article-view__wrapper">
           <ArticleView {...articleView} />
         </div>
+
+        <style jsx>{`
+          .admin-article-view {
+            position: relative;
+          }
+          .error {
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            color: red;
+          }
+          .controls {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+          }
+          .edit, .delete {
+            padding: 1rem;
+            background-color: cornflowerblue;
+            color: white;
+            text-transform: uppercase;
+          }
+          .delete {
+            background-color: darkred;
+            margin-left: 1rem;
+            cursor: pointer;
+          }
+        `}</style>
 
       </AdminLayout>
     );

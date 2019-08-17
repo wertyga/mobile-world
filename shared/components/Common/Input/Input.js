@@ -1,4 +1,8 @@
-import './style/input.sass'
+import _JSXStyle from 'styled-jsx/style';
+
+// import './style/input.scss'
+import styles from './style/input.style';
+// import styles from './style/input.scss';
 
 export class Input extends React.Component {
   constructor(props) {
@@ -46,15 +50,14 @@ export class Input extends React.Component {
       style: {
         paddingRight: heroRightWidth,
       },
-      className: cn({file: isFile}),
+      className: cn({ file: isFile }),
       id: isFile ? 'file-input' : name,
     }
 
-    const Element = textarea ? <textarea {...props} /> : <input {...props} />
     return (
       <div className={cn('input', { 'hero-right': heroRight }, { 'hero-left': heroLeft }, className)}>
         {heroLeft}
-        {Element}
+        {textarea ? <textarea {...props} /> : <input {...props} />}
 
         {isFile && <label htmlFor="file-input" className="input__file">{`File: ${visibleValue}`}</label>}
         {heroRight && (
@@ -62,6 +65,8 @@ export class Input extends React.Component {
             <button className="hero-right" ref={this.heroRightRef}>{heroRight.text}</button> :
             <div className="hero-right" ref={this.heroRightRef}>{heroRight.text}</div>
         )}
+
+        <style jsx>{styles}</style>
       </div>
     );
   }

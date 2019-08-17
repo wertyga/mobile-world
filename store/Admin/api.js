@@ -10,3 +10,8 @@ export const checkSession = () => fetch({
   method: 'get',
   url: '/api/admin/check-session',
 })
+
+export const checkAdmin = () => fetch({
+  method: 'get',
+  url: '/admin/check',
+})

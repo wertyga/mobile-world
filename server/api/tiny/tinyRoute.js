@@ -5,6 +5,12 @@ import { config } from 'server/common/config'
 import { saveArticle } from './saveArticle'
 import { Article } from 'server/models'
 
+import { findContentImages } from './helpers';
+
+const TEXT = {
+  noSuchArticle: 'No such article',
+};
+
 export const tinyRoute = express.Router()
 
 const postPutHandle = async (req, res) => {
@@ -41,9 +47,18 @@ tinyRoute.put('/article', postPutHandle)
 
 tinyRoute.delete('/article', async ({ body: { id } }, res) => {
   try {
-    await Article.findByIdAndDelete(id)
-    res.json(`success deleted ${id}`)
+    const article = await Article.findById(id);
+    if (!article) throw new Error(TEXT.noSuchArticle);
+
+    const { content, previewImage } = article;
+
+    await Promise.all([
+      findContentImages(content, previewImage),
+      article.remove(),
+    ]);
+
+    res.json(`success deleted ${id}`);
   } catch (e) {
-    res.status(500).json({ error: e.message })
+    res.status(500).json({ error: e.message });
   }
 })

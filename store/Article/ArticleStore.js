@@ -8,13 +8,13 @@ export class ArticleStore {
   articles = [];
 
   @action
-    getArticleList = async () => {
+    getArticleList = async (upToDate, more) => {
       try {
         this.articleState = 'pending'
 
-        const { data: { articles } } = await api.fetchArticleList()
+        const { data: { articles } } = await api.fetchArticleList(upToDate)
 
-        this.articles = articles
+        this.articles = more ? [...this.articles, ...articles] : articles;
         this.articleState = 'fulfilled'
       } catch (e) {
         this.error = _get(e, 'response.data.error', e.message);
