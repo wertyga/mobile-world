@@ -1,6 +1,4 @@
-import _JSXStyle from 'styled-jsx/style'
-
-import styles from './section.style';
+import './style.scss';
 
 export const Section = ({ children, h2, h5, fluid, grey, className, title, h1, isOne }) => {
   const isHasHeader = h1 || h2 || h5 || title
@@ -27,8 +25,6 @@ export const Section = ({ children, h2, h5, fluid, grey, className, title, h1, i
       <div className="row">
         {children}
       </div>
-
-      <style jsx>{styles}</style>
     </section>
   );
 }
