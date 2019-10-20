@@ -258,4 +258,10 @@ template {
 
 p {
   margin: 0;
+}
+
+.article-block-header {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem; 
 }`;

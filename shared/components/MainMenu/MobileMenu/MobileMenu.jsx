@@ -3,7 +3,7 @@ import { withRouter } from 'next/router'
 import Close from 'react-icons/lib/fa/times-circle'
 import { Search } from 'shared/components/Search/Search'
 import { ButterMenu } from '../ButterMenu/ButterMenu'
-import { MenuBanner } from 'shared/components/MainMenu/MenuBanner'
+import { MenuArticles } from 'shared/components/Article/MenuArticle/MenuArticles'
 import { MenuItem } from '../MenuItem'
 
 import './main-menu-mobile.sass'
@@ -35,7 +35,7 @@ const MenuMobileComponent = ({ list, router: { pathname } }) => {
           </div>
         }
       />
-      <MenuBanner isMobile />
+      <MenuArticles isMobile />
       <Search />
     </div>
   );

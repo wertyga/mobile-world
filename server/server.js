@@ -1,13 +1,7 @@
 import express from 'express';
 import next from 'next';
-import cookieSession from 'cookie-session'
 import bodyParser from 'body-parser'
-import './common/mongoose'
-
-import { adminAuthMiddleware } from './middlewares'
-
 const { setEnvies } = require('assets/envs/envs');
-import api from './api'
 import { config } from './common/config';
 
 const dev = process.env.NODE_ENV !== 'production';
@@ -20,12 +14,7 @@ app.prepare().then(() => {
   setEnvies();
 
   server.use(bodyParser.json());
-  server.use(cookieSession(config.session))
-  server.use(express.static(config.uploadPath.articleImagesPath));
 
-  server.all('/admin/*', adminAuthMiddleware)
-
-  server.use('/api', api);
   server.get('*', (req, res) => {
     return handle(req, res);
   });

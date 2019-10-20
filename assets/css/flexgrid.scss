@@ -1,9 +1,11 @@
 @import './constants.scss';
 
-.container {
-  max-width: 1600px;
-  margin: 0 auto;
-}
+//.container {
+//  max-width: 1316px;
+//  min-width: 995px;
+//  padding: 0 2%;
+//  margin: 0 auto;
+//}
 
 .container-fluid {
   margin-right: auto;
@@ -277,10 +279,6 @@
 }
 
 @media only screen and (min-width: $sm-min-width) {
-  .container {
-    width: 49rem;
-  }
-
   .col-sm,
   .col-sm-1,
   .col-sm-2,
@@ -508,10 +506,6 @@
 }
 
 @media only screen and (min-width: $md-min-width) {
-  .container {
-    width: 60rem;
-  }
-
   .col-md,
   .col-md-1,
   .col-md-2,
@@ -739,10 +733,6 @@
 }
 
 @media only screen and (min-width: $lg-min-width) {
-  .container {
-    width: 76rem;
-  }
-
   .col-lg,
   .col-lg-1,
   .col-lg-2,

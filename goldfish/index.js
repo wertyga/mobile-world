@@ -1,7 +1,5 @@
 export { HomePageText } from './HomePage'
 export { gfMainMenu } from './MainManu/gfMainMenu'
 export { gfSearch } from './Search/search'
-export { gfAdmin } from './Admin/admin'
-export { gfAdminMain } from './Admin/main'
 export { gfArticleStore } from './Article/articleStore'
-export { gfAdminArticle } from './Admin/article'
+export { gfBanners } from './Banners/gfBanners'

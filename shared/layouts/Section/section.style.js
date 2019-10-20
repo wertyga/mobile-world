@@ -7,6 +7,10 @@ export default css`
   padding: 3.8rem 0;
   background-color: $color-bg;
   margin: 0 auto;
+  max-width: 1316px;
+  min-width: 995px;
+  padding: 0 2%;
+  
   @include mobile {
     padding: 2rem 0;
   }

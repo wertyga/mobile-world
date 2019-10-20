@@ -1,1 +1,0 @@
-export { adminAuthMiddleware } from './adminMiddleware'

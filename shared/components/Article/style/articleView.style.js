@@ -25,7 +25,7 @@ export default css`
   
   .description {
     margin-bottom: 1rem;
-    font-size: 1.5em;
+    font-size: 1.7em;
     text-align: center;
     width: 80%;
     line-height: 2rem;

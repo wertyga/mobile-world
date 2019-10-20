@@ -2,10 +2,10 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const ENVIES_DEFAULTS = {
   dev: {
-
+    API_GATEWAY: 'http://localhost:3001',
   },
   prod: {
-
+    API_GATEWAY: 'http://localhost:3001',
   },
 }
 

@@ -1,6 +1,5 @@
 import { observable } from 'mobx';
-
-import { bannerTypes } from 'server/api/banners/banners'
+import { gfBanners, gfArticleStore } from 'goldfish';
 
 import * as api from './api'
 
@@ -11,12 +10,21 @@ export class MenuStore {
     Object.assign(this, data);
   }
 
+  register() {
+    const { getArticleList } = this.getRootStore().get('articleStore');
+
+    const articleOpts = {
+      destination: gfArticleStore.menuArticles,
+    }
+    getArticleList(0, gfArticleStore.clientFetchFields, articleOpts)
+  }
+
   getList = async (pathname) => {
     try {
       const { getBanners } = this.getRootStore().get('bannerStore')
       const [{ data: { categories } }] = await Promise.all([
         api.getCategories(pathname),
-        getBanners(bannerTypes.menu)
+        getBanners(gfBanners.menu)
       ]);
       this.menuList = categories;
     } catch (e) {

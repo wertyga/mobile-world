@@ -15,6 +15,8 @@ module.exports = withSass({
         PropTypes: 'prop-types',
         cn: 'classnames',
         inject: ['mobx-react', 'inject'],
+        observer: ['mobx-react', 'observer'],
+        observable: ['mobx-react', 'observable'],
         _JSXStyle: ['styled-jsx', 'style'],
       }),
       new webpack.DefinePlugin({

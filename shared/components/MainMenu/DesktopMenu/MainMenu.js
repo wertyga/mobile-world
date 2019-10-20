@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Search } from 'shared/components/Search/Search'
 import { MenuItem } from '../MenuItem'
-import { MenuBanner } from '../MenuBanner'
+import { MenuArticles } from '../../Article/MenuArticle/MenuArticles'
 
 import '../style/main-menu.sass'
 
@@ -18,7 +18,7 @@ export class MainMenu extends React.Component {
     const { menuStore: { menuList } } = this.props;
     return (
       <div className="main-menu">
-        <MenuBanner />
+        <MenuArticles />
 
         <div className="main-menu__menu">
           <Link href="/">

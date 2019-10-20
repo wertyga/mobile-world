@@ -1,7 +1,6 @@
 import App, { Container } from 'next/app'
 import _JSXStyle from 'styled-jsx/style';
 import Head from 'next/head'
-import 'shared/utils/getStoresData'
 
 import { Provider } from 'mobx-react'
 import { initializeStore } from 'store/store'
@@ -16,7 +15,7 @@ if (typeof document !== 'undefined') {
   history = createBrowserHistory();
 }
 
-class EnnergiiaApp extends App {
+class MobileWorldApp extends App {
   static async getInitialProps(appContext) {
     const { ctx: { req } } = appContext;
     const rootStore = initializeStore({
@@ -61,4 +60,4 @@ class EnnergiiaApp extends App {
   }
 }
 
-export default EnnergiiaApp;
+export default MobileWorldApp;
