@@ -21,7 +21,7 @@ export default class HomePage extends React.Component {
         {articleState === 'pending' && <Loader />}
 
         <Section className="home-page__wrapper">
-          <TopStories list={articles} header={TEXT.topArticles} />
+          <TopStories list={articles} />
         </Section>
 
       </Page>

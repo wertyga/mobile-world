@@ -1,19 +1,20 @@
 import _chunk from 'lodash/chunk';
-import { TopStoriesItem } from './TopStoriesItem';
+import { HomePageText } from 'goldfish'
+import { ThreeArticlesBlock } from 'shared/components/ThreeArticlesBlock/ThreeArticlesBlock';
 
-export const TopStories = ({ list, header }) => {
+import './style.scss';
+
+export const TopStories = ({ list }) => {
    return (
      <div className="top-stories col-sm-6 col-xs-12">
-       {header && <h2 className="article-block-header">{header}</h2>}
-
        {_chunk(list, 3).map(block => (
-         <TopStoriesItem key={block[0].id} list={block} />
+        <ThreeArticlesBlock key={block[0].id} list={block} title={HomePageText.topArticles} />
        ))}
        {_chunk(list, 3).map(block => (
-         <TopStoriesItem key={block[0].id} list={block} />
+         <ThreeArticlesBlock key={block[0].id} list={block} />
        ))}
        {_chunk(list, 3).map(block => (
-         <TopStoriesItem key={block[0].id} list={block} />
+         <ThreeArticlesBlock key={block[0].id} list={block} />
        ))}
      </div>
    );

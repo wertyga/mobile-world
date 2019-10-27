@@ -1,0 +1,10 @@
+@import "constants.scss";
+
+.little-article {
+  img {
+    object-fit: cover;
+  }
+  h3 {
+    margin: $space-2 0;
+  }
+}
