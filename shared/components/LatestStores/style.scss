@@ -1,0 +1,10 @@
+@import "constants.scss";
+
+.latest-stories {
+  &__title {
+    margin-bottom: $space-4;
+    font-size: $font-size-l;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+}

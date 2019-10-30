@@ -1,7 +1,7 @@
 @import "constants.scss";
 
 .three-articles-block {
-  .little-article {
+  .standart-article-preview {
     position: relative;
     display: flex;
     &.wide {
@@ -18,7 +18,7 @@
         height: 100%;
         background: linear-gradient(360deg, #00000096, transparent);
       }
-      .little-article__content {
+      .standart-article-preview__content {
         position: absolute;
         left: $space-4;
         bottom: $space-4;
@@ -31,7 +31,7 @@
           font-size: $font-size-l;
         }
       }
-      .little-article__date {
+      .standart-article-preview__date {
         display: none;
       }
     }
@@ -53,7 +53,7 @@
   &__footer {
     display: flex;
     justify-content: space-between;
-    .little-article {
+    .standart-article-preview {
       display: flex;
       flex-direction: column;
       width: 48%;

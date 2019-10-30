@@ -1,25 +1,52 @@
-import { action, observable } from 'mobx'
-import _get from 'lodash/get'
+import { action, observable } from 'mobx';
+import { getApiError } from 'shared/utils';
+import { gfArticleStore } from 'goldfish'
 
 import * as api from './api'
 
 export class ArticleStore {
   @observable articleState;
-  articles = [];
+  @observable articles = [];
+
+  @observable topArticles = [];
+  @observable latestArticles = [];
+
+  @observable error;
 
   @action
-    getArticleList = async (upToDate, fields, opts) => {
-      try {
-        this.articleState = 'pending'
+  getArticleList = async (upToDate, fields, opts) => {
+    try {
+      const { data: { articles } } = await api.fetchArticleList(upToDate, fields, opts);
 
-        const { data: { articles } } = await api.fetchArticleList(upToDate, fields, opts)
-
-        this.articles = articles;
-        this.articleState = 'fulfilled';
-      } catch (e) {
-        console.log(e);
-        this.error = _get(e, 'response.data.error', e.message);
-        this.articleState = 'rejected'
-      }
+      return articles;
+    } catch (e) {
+      throw e;
     }
+  }
+
+  @action
+  getTopArticles = async () => {
+    try {
+      this.topArticles = await this.getArticleList(
+        0,
+        gfArticleStore.clientFetchFields,
+        gfArticleStore.topArticles,
+      );
+    } catch (e) {
+      this.error = getApiError(e);
+    }
+  }
+
+  @action
+  getLatestArticles = async () => {
+    try {
+      this.latestArticles = await this.getArticleList(
+        0,
+        gfArticleStore.clientFetchFields,
+        gfArticleStore.latestArticles,
+      );
+    } catch (e) {
+      this.error = getApiError(e);
+    }
+  }
 }

@@ -1,5 +1,5 @@
-import { useStaticRendering } from 'mobx-react'
-import { observable } from 'mobx'
+import { useStaticRendering } from 'mobx-react';
+import { observable } from 'mobx';
 
 const isServer = !process.browser
 useStaticRendering(isServer)

@@ -1,21 +1,28 @@
+import { useEffect } from 'react';
 import _chunk from 'lodash/chunk';
 import { HomePageText } from 'goldfish'
 import { ThreeArticlesBlock } from 'shared/components/ThreeArticlesBlock/ThreeArticlesBlock';
+import { useSelector } from 'hooks';
+import storeSelector from './selectors';
 
 import './style.scss';
 
-export const TopStories = ({ list }) => {
-   return (
-     <div className="top-stories col-sm-6 col-xs-12">
-       {_chunk(list, 3).map(block => (
-        <ThreeArticlesBlock key={block[0].id} list={block} title={HomePageText.topArticles} />
-       ))}
-       {_chunk(list, 3).map(block => (
-         <ThreeArticlesBlock key={block[0].id} list={block} />
-       ))}
-       {_chunk(list, 3).map(block => (
-         <ThreeArticlesBlock key={block[0].id} list={block} />
-       ))}
-     </div>
-   );
+export const TopStories = ({ className }) => {
+  const { getTopArticles, topArticles } = useSelector(storeSelector);
+
+  useEffect(() => {
+    getTopArticles();
+  }, []);
+
+  return (
+    <div className={cn('top-stories', className)}>
+      {_chunk(topArticles, 3).map((block, i) => (
+        <ThreeArticlesBlock
+          key={block[0]._id}
+          list={block}
+          title={i === 0 ? HomePageText.topArticles : null}
+        />
+      ))}
+    </div>
+  );
 };

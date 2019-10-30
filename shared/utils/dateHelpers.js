@@ -1,3 +1,5 @@
+import { getNoun } from './stringHelpers';
+
 const months = [
   'января',
   'февраля',
@@ -12,6 +14,13 @@ const months = [
   'ноября',
   'декабря',
 ];
+
+const dateNounTypes = {
+  day: ['день', 'дня', 'дней'],
+  hours: ['час', 'часа', 'часов'],
+  minutes: ['минута', 'минуты', 'минут'],
+};
+
 const defaultOptions = {
   year: 'numeric',
   month: 'long',
@@ -19,6 +28,14 @@ const defaultOptions = {
   timezone: 'UTC',
 };
 const iso8601 = /^(\d{4})-(\d{1,2})-(\d{1,2})([T ](\d{1,2}):(\d{1,2}):(\d{1,2})(\.\d+)?(Z|([+-])(\d{1,2})(:(\d{1,2}))?)?)?$/;
+
+const getDays = seconds => Math.floor(seconds / (60 * 60 * 24));
+const getHours = seconds => Math.floor(seconds / (60 * 60));
+const getMinutes = seconds => Math.floor(seconds / 60);
+
+const getNounDate = (type) => {
+
+}
 
 const parseISO8601 = (datestring) => {
   const [
@@ -88,3 +105,28 @@ export const getMonthBefore = () => {
   const year = `20${now.getYear().toString().slice(1)}`; // Get 20... year
   return  new Date(year, now.getMonth() - 1, now.getDate())
 };
+
+export const getTimePassFromNow = (date) => {
+  const nowDate = new Date();
+  const prevDate = new Date(date);
+  const differenceTime = (nowDate.getTime() - prevDate.getTime()) / 1000;
+
+  const days = getDays(differenceTime);
+  const hours = getHours(differenceTime - (days * 24 * 60 * 60));
+  const minutes = getHours(differenceTime - (days * 24 * 60 * 60) - (hours * 60));
+
+  if (!!+days) {
+    const noun = getNoun(days, dateNounTypes.day[0], dateNounTypes.day[1], dateNounTypes.day[2]);
+    return `${days} ${noun} назад`
+  }
+  if (!!+hours) {
+    const noun = getNoun(hours, dateNounTypes.hours[0], dateNounTypes.hours[1], dateNounTypes.hours[2]);
+    return `${hours} ${noun} назад`;
+  }
+  if (!!+minutes) {
+    const noun = getNoun(minutes, dateNounTypes.minutes[0], dateNounTypes.minutes[1], dateNounTypes.minutes[2]);
+    return `${minutes} ${noun} назад`;
+  }
+
+  return 'Только что';
+}
