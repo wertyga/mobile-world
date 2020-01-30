@@ -36,7 +36,7 @@
     "shelljs": "^0.8.3",
     "short-id": "0.1.0-1",
     "styled-jsx-postcss": "^0.2.0",
-    "tinymce": "^5.0.12"
+    "tinymce": "^5.1.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.0",
